@@ -1,0 +1,87 @@
+{
+  "skill_name": "owasp",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're adding a login form and need to validate user input. What should we do according to OWASP?",
+      "expected_output": "Response cites OWASP cheat sheets (e.g. Input Validation, Injection Prevention) and gives concrete, allowlist-oriented guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Which cheat sheets should I use to satisfy ASVS V6 (Authentication)?",
+      "expected_output": "Response uses IndexASVS (or references/IndexASVS.md) to list the cheat sheets mapped to V6 and briefly states how they support authentication verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to draft a new OWASP-style cheat sheet for webhook security. What structure should I follow?",
+      "expected_output": "Response uses the New_CheatSheet template (Introduction, Main Sections, References) and aligns with OWASP tone and conventions.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Find edge cases and failure modes in a typical login + session flow (bad inputs, auth bypass, session fixation, env failures). Group by category (Inputs, API/usage, System, Security). For each: severity (Critical/High/Medium/Low), mitigations with short code examples where they help, and cite OWASP. Also give a simplified summary (compact table or bullets) and category weights plus a coverage score (%).",
+      "expected_output": "Scenario output: edge cases grouped by category; severity; mitigations with code examples; simplified summary; weights and coverage score; OWASP cheat sheets cited.",
+      "files": [],
+      "expectations": [
+        "Edge cases or failure modes are grouped by at least two of: Inputs, API/usage, System, Business, Security",
+        "Severity (Critical/High/Medium/Low) is assigned for listed items",
+        "Mitigations or test ideas are provided, with at least one short code example",
+        "A simplified summary (compact table or bullet list) is included",
+        "Category weights and/or coverage score (%) are included",
+        "At least one OWASP cheat sheet or ASVS reference is cited"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Find edge cases and failure modes for a file-upload API (bad inputs, path traversal, type confusion, size limits, race conditions). Group by category, add severity and mitigations with short code examples where helpful. Align with OWASP. Include a simplified summary and category weights plus coverage score (%).",
+      "expected_output": "File-upload scenario analysis: categories, severity, mitigations with code examples, simplified summary, weights/coverage, OWASP File Upload or related cheat sheet cited.",
+      "files": [],
+      "expectations": [
+        "At least one Security-related edge case (e.g. path traversal, unrestricted type) is listed",
+        "Severity and mitigations are present, with at least one code example",
+        "A simplified summary (compact table or bullets) is included",
+        "Category weights and/or coverage score (%) are included",
+        "OWASP File Upload Cheat Sheet or related guidance is referenced"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Find edge cases and failure modes for an API that accepts JSON and talks to a database (null/type/overflow, injection, missing auth, races, network/time). Group by Inputs, API/usage, System, Security. Add severity and mitigations with code examples where helpful; cite OWASP. Include a simplified summary and weights plus coverage score (%).",
+      "expected_output": "JSON/DB API scenario analysis: grouped edge cases, severity, mitigations with code examples, simplified summary, weights/coverage, OWASP cited.",
+      "files": [],
+      "expectations": [
+        "Inputs category includes at least one of: null, wrong type, overflow, encoding",
+        "Security category includes injection or auth-related failure mode",
+        "Severity and mitigations are provided, with at least one code example",
+        "A simplified summary and category weights and/or coverage score (%) are included",
+        "At least one OWASP cheat sheet is cited"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Find edge cases and failure modes for password reset (forgot-password flow): bad inputs, token leakage, replay, timing, email/env failures. Group by category, add severity and mitigations with short code examples where helpful. Use OWASP cheat sheets. Include a simplified summary and weights plus coverage score (%).",
+      "expected_output": "Password-reset scenario analysis: categories, severity, mitigations with code examples, simplified summary, weights/coverage, OWASP Forgot Password or Authentication cited.",
+      "files": [],
+      "expectations": [
+        "At least one Security-related scenario (e.g. token leakage, replay) is included",
+        "Severity and mitigations are present, with at least one code example",
+        "A simplified summary and category weights and/or coverage score (%) are included",
+        "OWASP Forgot Password or Authentication cheat sheet is referenced"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Find edge cases and failure modes for a web endpoint that reads a query parameter and renders HTML (XSS, open redirect, null/encoding). Group by Inputs and Security, add severity and mitigations with short code examples where helpful. Cite OWASP. Include a simplified summary and weights plus coverage score (%).",
+      "expected_output": "Query-param-to-HTML scenario analysis: XSS/redirect edge cases, severity, mitigations with code examples, simplified summary, weights/coverage, OWASP XSS/Input Validation cited.",
+      "files": [],
+      "expectations": [
+        "XSS or unintended content interpretation is listed as a failure mode or edge case",
+        "Severity and mitigations are provided, with at least one code example",
+        "A simplified summary and category weights and/or coverage score (%) are included",
+        "OWASP Cross-Site Scripting Prevention or Input Validation cheat sheet is cited"
+      ]
+    }
+  ]
+}
