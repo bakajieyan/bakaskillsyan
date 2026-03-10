@@ -1,0 +1,44 @@
+{
+  "skill_name": "designing-hexagonal-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're building a small billing service in NestJS. I want the core logic to not depend on the database or HTTP. Can you outline the folder structure and where the ports and adapters should go, and show a minimal port interface for 'charge customer'?",
+      "expected_output": "A clear layered structure (e.g. domain with ports, application services, adapters for HTTP and DB), dependency direction inward, and a minimal port interface (e.g. IPaymentPort or IChargePort) defined in the domain with an adapter implementing it. No business logic in controllers or repositories.",
+      "files": [],
+      "expectations": [
+        "Output includes a clear layered folder structure (domain/ports, application, adapters for HTTP and DB)",
+        "Dependency direction is described as inward (adapters depend on domain, not the reverse)",
+        "A minimal port interface for charge customer is shown (e.g. TypeScript interface in domain)",
+        "Core/domain is described as free of database and HTTP; no business logic in controllers or repositories",
+        "Structure uses domain-owned ports (e.g. billing/ports/ or modules/billing/ports/) and does not put all ports in a single core/ports/ or src/ports/"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our backend is a big ball of mud—controllers call repositories directly and there's business logic in the route handlers. How do I refactor this toward ports and adapters step by step without rewriting everything at once?",
+      "expected_output": "A pragmatic, step-by-step refactor plan: e.g. (1) identify one use case and extract a port interface in the domain, (2) move business logic into an application service that depends on the port, (3) make the existing repository implement the port and inject it, (4) thin the controller to only HTTP concerns. Dependency direction and where ports live (in the owning domain) should be respected.",
+      "files": [],
+      "expectations": [
+        "Output includes a step-by-step refactor plan (incremental, not big-bang)",
+        "Plan includes extracting a port interface in the owning domain",
+        "Plan includes moving business logic into an application/use-case service that depends on the port",
+        "Plan includes making repository implement the port and thin controller to HTTP-only",
+        "Plan explicitly places ports in the owning domain folder (e.g. order/ports/) and avoids a shared core/ports/ or common/ports/"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I'm using Hono and need to add a new feature that calls an external payment API. Where should the interface live and who implements it so we can swap to a mock in tests?",
+      "expected_output": "A port interface (e.g. IPaymentGatewayPort) defined in the domain that owns the use case; a secondary (driven) adapter that implements the port and talks to the real API; wiring via Hono middleware (c.set) so handlers receive the port. Explanation that tests inject a mock implementation of the same port.",
+      "files": [],
+      "expectations": [
+        "Output states the interface (port) lives in the domain that owns the use case",
+        "Output describes a secondary/driven adapter that implements the port and calls the real API",
+        "Output describes Hono wiring (e.g. middleware, c.set) so handlers receive the port",
+        "Output explains that tests inject a mock implementing the same port",
+        "Wiring uses Hono context (c.set / c.get or route factory receiving port) so handlers depend on the port abstraction, not a global or hardcoded adapter"
+      ]
+    }
+  ]
+}

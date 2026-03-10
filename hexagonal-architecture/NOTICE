@@ -1,0 +1,31 @@
+Hexagonal Architecture (skill)
+Copyright (c) 2026 bakajieyan
+
+This skill is part of the repository and is subject to the license in the
+repository root (LICENSE).
+
+--- Third-party and external materials ---
+
+Skill content (SKILL.md)
+  Portions of this skill’s content (e.g. When to Use, Dependency Rule, Quick
+  Decision Trees, Directory Structure, DDD Building Blocks, Anti-Patterns,
+  Implementation Order, Reference Documentation table, Sources list) are
+  sourced from or adapted from:
+  https://github.com/ccheney/robust-skills/blob/main/skills/clean-ddd-hexagonal/SKILL.md
+  Project: robust-skills (ccheney/robust-skills), skill: clean-ddd-hexagonal.
+  Used with attribution; see that repository for its license terms.
+
+Reference documentation (references/*.md)
+  Sourced from: https://github.com/ccheney/robust-skills/tree/main/skills/clean-ddd-hexagonal/references
+  Project: robust-skills (ccheney/robust-skills)
+  Those reference files are used with attribution; see that repository for
+  their license terms.
+
+External articles and sites cited in SKILL.md (e.g. Clean Architecture,
+Hexagonal Architecture, Martin Fowler bliki, microservices.io) are linked
+and attributed in the Sources section. Their content is not included
+verbatim; the skill summarizes concepts for educational use. Respect
+each author's terms and copyright when using or referencing them.
+
+Framework names (NestJS, ElysiaJS, Hono) are used for identification only.
+Trademarks are the property of their respective owners.

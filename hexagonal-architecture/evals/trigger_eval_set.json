@@ -1,0 +1,22 @@
+[
+  {"query": "We're building a small billing service in NestJS. I want the core logic to not depend on the database or HTTP. Can you outline the folder structure and where the ports and adapters should go?", "should_trigger": true},
+  {"query": "Our backend is a big ball of mud—controllers call repositories directly. How do I refactor toward ports and adapters step by step?", "should_trigger": true},
+  {"query": "I'm using Hono and need to add a feature that calls an external payment API. Where should the interface live and who implements it so we can mock in tests?", "should_trigger": true},
+  {"query": "Where should I put my repository interfaces so the domain doesn't depend on TypeORM?", "should_trigger": true},
+  {"query": "How do I structure a Node backend so I can swap the database or the HTTP framework without touching business logic?", "should_trigger": true},
+  {"query": "We're doing clean architecture but our use cases still import from the infra layer. How do we invert the dependency?", "should_trigger": true},
+  {"query": "I need to organize our Express app by domain with clear boundaries and testable services. Where do controllers and repos go?", "should_trigger": true},
+  {"query": "What's the best way to keep domain logic independent of NestJS and the database? Ports and adapters?", "should_trigger": true},
+  {"query": "We have DDD-style bounded contexts but tight coupling to the DB. How do we introduce interfaces so we can mock persistence?", "should_trigger": true},
+  {"query": "How do I wire a payment gateway in Elysia so handlers get an abstraction and tests can use a fake?", "should_trigger": true},
+  {"query": "Write a REST API in Express that returns a list of users from PostgreSQL.", "should_trigger": false},
+  {"query": "How do I add JWT authentication to my NestJS app?", "should_trigger": false},
+  {"query": "What's the difference between a service and a repository in Spring?", "should_trigger": false},
+  {"query": "How do I deploy my Node app to AWS Lambda?", "should_trigger": false},
+  {"query": "We use CQRS and event sourcing. How do we model the write side aggregate?", "should_trigger": false},
+  {"query": "Design a microservices architecture for an e-commerce platform with service discovery and API gateway.", "should_trigger": false},
+  {"query": "How do I structure environment variables and config for a 12-factor Node app?", "should_trigger": false},
+  {"query": "Our GraphQL resolvers are doing too much. Should we use a service layer?", "should_trigger": false},
+  {"query": "What's the best folder structure for a Next.js app with API routes?", "should_trigger": false},
+  {"query": "How do I implement rate limiting and retries for an external API client in TypeScript?", "should_trigger": false}
+]
