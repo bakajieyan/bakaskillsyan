@@ -1,3 +1,5 @@
 *-workspace
 .cursor
 *.skill
+__pycache__/
+*.py[cod]

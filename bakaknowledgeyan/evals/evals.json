@@ -1,0 +1,74 @@
+{
+  "skill_name": "bakaknowledgeyan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We just onboarded a new LGU tenant. Create an OKF knowledge bundle under knowledge/tenant-system/ documenting the core entities: Organization, Tenant, and how tenant_id isolation works. Link the concepts together and include index files.",
+      "expected_output": "A conformant OKF bundle with frontmatter on every concept, root index.md with okf_version, subdirectory indexes, cross-links, and log.md initialization entry.",
+      "files": [],
+      "assertions": [
+        "Root index.md exists at bundle root",
+        "Root index.md declares okf_version in frontmatter",
+        "Root log.md exists at bundle root",
+        "Root log.md has dated entry (YYYY-MM-DD)",
+        "Concept files exist for Organization and Tenant with non-empty type frontmatter",
+        "A concept or section documents tenant_id isolation",
+        "Cross-links use bundle-relative /path/concept.md format between related concepts",
+        "validate_okf.py exits 0 when run against the bundle",
+        "Concept bodies use terse prose: bullets over paragraphs, no filler words (just, basically, simply)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Using the schema in .cursor/rules/project.mdc, add OKF concepts under a new knowledge/ bundle for the main PostgreSQL tables (tenants, admins, transactions). Use proper type names, # Schema sections, resource URIs, and bundle-relative links.",
+      "expected_output": "Concept files under a knowledge/ bundle with PostgreSQL Table types, # Schema tables, resource URIs pointing to schema sources, and updated index.md files.",
+      "files": [],
+      "assertions": [
+        "Root index.md exists at bundle root",
+        "Root index.md declares okf_version in frontmatter",
+        "Root log.md exists at bundle root",
+        "Root log.md has dated entry (YYYY-MM-DD)",
+        "tables/index.md subdirectory index exists",
+        "Concept files for tenants, admins, and transactions exist with type PostgreSQL Table",
+        "Each table concept has a # Schema section with a markdown table",
+        "Frontmatter includes resource URIs pointing to schema source files",
+        "Tables cross-link to each other where foreign keys exist",
+        "Parent index lists all three table concepts",
+        "validate_okf.py exits 0 when run against the bundle",
+        "Concept bodies use terse prose: bullets over paragraphs, no filler words (just, basically, simply)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write an OKF playbook concept for incident response when a tenant sees cross-tenant data leakage. It should link to relevant auth/RBAC concepts and cite our module boundary rules.",
+      "expected_output": "A Playbook-type concept with Trigger and Steps sections, links to related concepts, Citations section, and log.md update entry.",
+      "files": [],
+      "assertions": [
+        "Root index.md exists at bundle root",
+        "Root index.md declares okf_version in frontmatter",
+        "Root log.md exists at bundle root",
+        "Root log.md has dated entry (YYYY-MM-DD)",
+        "playbooks/index.md subdirectory index exists",
+        "A Playbook-type concept exists for cross-tenant data leakage incident response",
+        "Body includes Trigger and Steps sections",
+        "Links to at least two related auth/RBAC or isolation concepts",
+        "Citations section references module boundary rules or cursor rules",
+        "validate_okf.py exits 0 when run against the bundle",
+        "Playbook steps use terse format: bold verb labels, minimal filler"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How does tenant_id isolation work in this repo? Use the existing OKF bundle — run query_okf.py before reading concept files. Save answer.md (your answer), files_read.txt (one path per line, every file you opened), and query_log.txt (paste query_okf.py command + output).",
+      "expected_output": "Accurate isolation answer from 1-3 concepts max; query_log shows discover/query before bulk reads; files_read.txt lists at most 4 paths.",
+      "files": [],
+      "assertions": [
+        "answer.md exists and mentions tenant_id isolation",
+        "query_log.txt exists and references query_okf.py or discover_okf.py",
+        "files_read.txt lists at most 4 file paths",
+        "files_read.txt includes tenant-id-isolation concept or query matched it",
+        "answer does not paste full bundle catalog"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bakaknowledgeyan — Trigger Eval Review</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    .row { border: 1px solid #ddd; padding: 0.75rem; margin: 0.5rem 0; border-radius: 4px; }
+    .trigger { border-left: 4px solid #060; }
+    .no-trigger { border-left: 4px solid #900; }
+    label { display: block; margin: 0.25rem 0; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; }
+    textarea { width: 100%; height: 120px; font-family: monospace; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Trigger eval — bakaknowledgeyan</h1>
+  <p><strong>Description (optimized):</strong> OKF bundles on any repo; query_okf/discover_okf before bulk read. Not for OWASP-only, OpenAPI, README-only, ADR, ER diagrams, vector KB, explain-only (no OKF task), caveman compress.</p>
+  <p>Review queries. Toggle if wrong. Export JSON when done.</p>
+  <div id="list"></div>
+  <button onclick="exportJson()">Export JSON</button>
+  <p><textarea id="out" readonly placeholder="Exported JSON appears here"></textarea></p>
+  <script>
+    const data = [
+      {"id":"t01","query":"need to document our postgres schema as agent-readable markdown w/ yaml frontmatter for EUF — tenants admins transactions tables","should_trigger":true},
+      {"id":"t02","query":"create knowledge bundle under knowledge/ for tenant isolation + RBAC, link concepts, run validator when done","should_trigger":true},
+      {"id":"t03","query":"turn packages/database entities into OKF concepts w/ # Schema sections and bundle-relative links pls","should_trigger":true},
+      {"id":"t04","query":"we just onboarded LGU Puerto Galera — write concept docs for Organization Tenant and how tenant_id isolation works","should_trigger":true},
+      {"id":"t05","query":"add incident playbook to knowledge/playbooks/ for when tenant sees another tenant's data (cross-tenant leak)","should_trigger":true},
+      {"id":"t06","query":"build progressive disclosure index.md for our internal agent wiki — group by tables apis playbooks","should_trigger":true},
+      {"id":"t07","query":"py bakaknowledgeyan/scripts/validate_okf.py knowledge/ failed — fix conformance errors","should_trigger":true},
+      {"id":"t08","query":"enrich this monorepo: linked markdown concepts w/ frontmatter type field so agents can traverse domain model","should_trigger":true},
+      {"id":"t09","query":"document nestjs API endpoints as OKF concepts, cross-link to postgres tables they read/write","should_trigger":true},
+      {"id":"t10","query":"boss wants google knowledge catalog style docs (OKF) for billing service — not sure where to start","should_trigger":true},
+      {"id":"n01","query":"fix prettier formatting in my react components","should_trigger":false},
+      {"id":"n02","query":"write git commit message for tenant isolation middleware fix","should_trigger":false},
+      {"id":"n03","query":"run owasp security review on auth middleware — injection and IDOR","should_trigger":false},
+      {"id":"n04","query":"generate openapi 3.1 spec from our nestjs controllers in apps/tenant-system-api","should_trigger":false},
+      {"id":"n05","query":"create README.md for packages/tenant-system following doc standards","should_trigger":false},
+      {"id":"n06","query":"add prisma migration for users table — add email unique index","should_trigger":false},
+      {"id":"n07","query":"explain how JWT auth and tenant context resolution works in our app (just explain, no new docs)","should_trigger":false},
+      {"id":"n08","query":"compress CLAUDE.md and AGENTS.md to caveman format save tokens","should_trigger":false},
+      {"id":"n09","query":"write ADR-007 why we chose postgres over mysql for multi-tenant","should_trigger":false},
+      {"id":"n10","query":"export our schema to dbdiagram ER diagram for the architecture review deck","should_trigger":false},
+      {"id":"n11","query":"add markdown docs for the payments table in docs/payments.md — single file is fine","should_trigger":false},
+      {"id":"n12","query":"build notion-style knowledge base with embeddings and vector search for support team","should_trigger":false}
+    ];
+    const list = document.getElementById('list');
+    data.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'row ' + (item.should_trigger ? 'trigger' : 'no-trigger');
+      div.innerHTML = `<strong>${item.id}</strong> ${item.query}<br>
+        <label><input type="checkbox" data-i="${i}" class="trig" ${item.should_trigger?'checked':''}> should_trigger</label>`;
+      list.appendChild(div);
+    });
+    function exportJson() {
+      document.querySelectorAll('.trig').forEach(cb => {
+        data[+cb.dataset.i].should_trigger = cb.checked;
+      });
+      document.getElementById('out').value = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
