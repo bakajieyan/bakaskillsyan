@@ -9,6 +9,7 @@ A curated list of agent skills for AI-assisted development and codebase work.
 | [owasp/](owasp/) | Security reviews using OWASP cheat sheets and ASVS |
 | [bakaknowledgeyan/](bakaknowledgeyan/) | OKF knowledge bundles — any repo, progressive disclosure, query before read |
 | [hexagonal-architecture/](hexagonal-architecture/) | Hexagonal architecture patterns |
+| [stacking-prs/](stacking-prs/) | Stacked PRs via `gh stack` — layer budgets, submit/sync/merge, squash-sync |
 
 ## License
 

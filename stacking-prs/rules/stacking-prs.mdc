@@ -1,0 +1,34 @@
+---
+description: >
+  Stacked pull requests — keep changes reviewable. Prefer gh stack. Layer budgets:
+  ≤20 files target / 30 ceiling; ≤300 lines target / 500 ceiling; one concern per layer.
+  Load stacking-prs skill when stacking or when a change exceeds budgets.
+alwaysApply: true
+id: stacking-prs
+title: "Stacked pull requests (reviewable layers)"
+category: agents
+---
+
+# Stacking PRs rule (always apply)
+
+1. **Prefer stacks over mega-PRs** when a change spans multiple concerns or exceeds layer budgets
+2. Read [`../SKILL.md`](../SKILL.md) before operating a stack
+3. Tooling: GitHub stacked PRs + `gh stack`; install `github/gh-stack`
+4. Trunk = org integration base (`dev` by default) unless hotfix → `main` (or org equivalent)
+5. **Layer budgets** (vs parent branch):
+
+| Metric | Target | Ceiling |
+| ------ | ------ | ------- |
+| Files | ≤20 | **30** |
+| Net lines (excl. lock/gen when judging) | ≤300 | **500** |
+| Themes / concerns | 1 | 1 |
+
+6. Over ceiling → **split** (`gh stack add`) before `gh stack submit` — do not ship oversized layer
+7. Dependency order: foundation bottom · dependents above · never put deps above dependents
+8. Fix on the owning layer → `gh stack rebase --upstack` → push; no silent force-push (confirm with user)
+9. Merge **bottom-up** (`gh stack merge` or UI); mid-merge re-targets above to trunk
+10. Squash-into-trunk conflict artifact → [`../references/cli-and-squash-sync.md`](../references/cli-and-squash-sync.md) § Squash sync (Pacheco)
+11. Operate/sync/submit on **main thread** — no dedicated stacking agent
+12. Same-repo only — cross-fork stacks unsupported
+
+Security / irreversible git → clear English first.
